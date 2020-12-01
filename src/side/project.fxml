@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="657.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="side.Controller">
+  <tabs>
+    <Tab text="fuckers">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ChoiceBox fx:id="funny" layoutX="21.0" layoutY="72.0" prefWidth="150.0">
+                   <items>
+                       <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Bigboy" />
+                           <String fx:value="bribed" />
+                           <String fx:value="gayHacker" />
+                           <String fx:value="Armstrong" />
+                           <String fx:value="documentation" />
+                           <String fx:value="InfiniteGay"/>
+                       </FXCollections>
+                   </items>
+               </ChoiceBox>
+                  <ImageView fx:id="memes" fitHeight="350.0" fitWidth="350.0" layoutX="276.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="starter" layoutX="21.0" layoutY="107.0" mnemonicParsing="false" onAction="#showImage" text="Genious" />
+                  <Button fx:id="reSize" layoutX="21.0" layoutY="144.0" mnemonicParsing="false" onAction="#reSizeImage" text="Better?" />
+                  <Text layoutX="14.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate my memes with 1 - 10">
+                     <font>
+                        <Font name="Cambria" size="12.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="awesomeField" layoutX="64.0" layoutY="225.0" onKeyPressed="#saveForStats" prefHeight="25.0" prefWidth="35.0" text="!" />
+               </children>
+            </AnchorPane>
+         </content></Tab>
+    <Tab text="Untitled Tab 2">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+         </content></Tab>
+  </tabs>
+</TabPane>
