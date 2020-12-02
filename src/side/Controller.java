@@ -11,7 +11,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -37,7 +41,13 @@ public class Controller {
     private TextField awesomeField;
 
     @FXML
-    void showImage(ActionEvent event) throws IllegalArgumentException {
+    private Text averageScore;
+
+
+
+
+    @FXML
+    void showImage(ActionEvent event) throws IllegalArgumentException, FileNotFoundException {
 
         String billede = (String) funny.getValue();
         Date d = new Date();
@@ -53,22 +63,46 @@ public class Controller {
                 memes.setImage(image);
             }
         }
-
+        setAverage();
     }
 
-    @FXML
-    void reSizeImage(ActionEvent event) {
 
-        if (memes.isPreserveRatio()) {
-            memes.setPreserveRatio(false);
-        }else {
-            memes.setPreserveRatio(true);
+    @FXML
+    void setAverage() throws FileNotFoundException {
+        int averager = 0;
+        int total = 0;
+        java.io.File file = new java.io.File("C:\\Users\\fredr\\IdeaProjects\\GUI_project\\stats.txt");
+        Scanner input = new Scanner(file);
+
+        while (input.hasNext()){
+            if (input.next().equals(funny.getValue())){
+                total += input.nextInt();
+                averager++;
+            }
         }
-
+        try {
+            averageScore.setText(String.valueOf(total / averager));
+        }catch (ArithmeticException e){
+            System.out.println("fool, you cant divde by zero");
+        }
     }
 
+
     @FXML
-    void saveForStats(KeyEvent event) {
+    void reSizeImage(MouseEvent event) {
+
+        if (event.getButton() == MouseButton.PRIMARY){
+            if (memes.isPreserveRatio()) {
+            memes.setPreserveRatio(false);
+            } else {
+            memes.setPreserveRatio(true);
+            }
+        }
+    }
+
+
+    @FXML
+    void saveForStats(KeyEvent event) throws FileNotFoundException {
         if (event.getCode() == KeyCode.ENTER){
             String score = awesomeField.getText();
             int realscore = Integer.parseInt(score);
@@ -86,7 +120,9 @@ public class Controller {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
             }
+
         }
+        setAverage();
 
     }
 }
