@@ -4,15 +4,11 @@ import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.FileNotFoundException;
@@ -26,10 +22,19 @@ public class Controller {
 
 
     @FXML
+    private TabPane buttombitch;
+
+    @FXML
+    private AnchorPane background;
+
+    @FXML
     private ChoiceBox funny;
 
     @FXML
     private ImageView memes;
+
+    @FXML
+    private ImageView harold;
 
     @FXML
     private Button starter;
@@ -42,8 +47,6 @@ public class Controller {
 
     @FXML
     private Text averageScore;
-
-
 
 
     @FXML
@@ -106,6 +109,11 @@ public class Controller {
         if (event.getCode() == KeyCode.ENTER){
             String score = awesomeField.getText();
             int realscore = Integer.parseInt(score);
+            if (realscore > 10){
+                realscore = 10;
+            } else if (realscore < 0){
+                realscore = 0;
+            }
             System.out.println(realscore);
 
             try {
@@ -124,5 +132,11 @@ public class Controller {
         }
         setAverage();
 
+    }
+
+   @FXML
+    void initialize(){
+        harold.fitHeightProperty().bind(buttombitch.heightProperty());
+        harold.fitWidthProperty().bind(buttombitch.widthProperty());
     }
 }
