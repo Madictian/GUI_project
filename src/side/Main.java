@@ -16,8 +16,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class Main extends Application {
 
@@ -28,6 +31,36 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root,800, 600));
         primaryStage.show();
         primaryStage.setResizable(true);
+
+        Stage stage = new Stage();
+        String path = "";
+/*
+        //Instantiating Media class
+        Media media = new Media(new File(path).toURI().toString());
+
+        //Instantiating MediaPlayer class
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+        //Instantiating MediaView class
+        MediaView mediaView = new MediaView(mediaPlayer);
+
+        //by setting this property to true, the Video will be played
+        mediaPlayer.setAutoPlay(true);
+
+        //setting group and scene
+        Group root1 = new Group();
+        root1.getChildren().add(mediaView);
+        Scene scene = new Scene(root,500,400);
+        primaryStage.setScene(scene);
+        */
+        WebView webview = new WebView();
+        WebEngine engine = webview.getEngine();
+
+        engine.load("https://www.youtube.com/embed/pxkSfttYCrM");
+        webview.setPrefSize(640, 390);
+        stage.setTitle("vid");
+        stage.setScene(new Scene(webview));
+        stage.show();
 
 
 

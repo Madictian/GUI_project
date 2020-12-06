@@ -36,6 +36,8 @@
                            <String fx:value="Armstrong" />
                            <String fx:value="documentation" />
                            <String fx:value="InfiniteGay" />
+                           <String fx:value="InformationTypes" />
+                           <String fx:value="Pokefun" />
                        </FXCollections>
                    </items>
                </ChoiceBox>
